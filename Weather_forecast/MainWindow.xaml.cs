@@ -16,6 +16,7 @@ using System.Xml;
 using System.Xml.Linq;
 using System.IO;
 using System.Net;
+using Microsoft.Win32;
 
 namespace Weather_forecast
 {
@@ -80,6 +81,34 @@ namespace Weather_forecast
             visibilityKm.Text = xVisibilityKM;
             uv.Text = xUV;
             lastUpdate.Text = xLastUpdate;
+        }
+
+        private void showWeatherBrodcast_Click(object sender, RoutedEventArgs e)
+        {
+            /*ForecastForMOreDays objFFMD = new ForecastForMOreDays();
+            objFFMD.Show();
+            */
+
+            Microsoft.Win32.OpenFileDialog openFileDialog = new OpenFileDialog();
+
+            bool? response = openFileDialog.ShowDialog();
+
+            if(response == true)
+            {
+                string filepath = openFileDialog.FileName;
+
+                MessageBox.Show(filepath);
+            }
+        }
+
+        private void Download_Click(object sender, RoutedEventArgs e)
+        {
+            SaveFileDialog dlg = new SaveFileDialog();
+            dlg.Filter = "Text file(*.txt)|*.txt |C# file (*.cs)|*.cs";
+            if(dlg.ShowDialog() == true)
+            {
+                File.WriteAllText(dlg.FileName, $"Temperatura w Celsiuszach: {celciusTemp.Text}C, Temperatura w Farenheitach: {farenheitTemp.Text}F, Prędkość wiatru KpH: {kphSpeed.Text}kph, Wilgotność: {humidity.Text}%, Kraj: {country.Text}, Ciśnienie: {pressure.Text}HPa, Zachmurzenie: {cloudCover.Text}%, Widoczność: {visibilityKm.Text}km, UV: {uv.Text} na 11, Ostatnia aktualizacja pogody: {lastUpdate.Text}");
+            }
         }
     }
 }

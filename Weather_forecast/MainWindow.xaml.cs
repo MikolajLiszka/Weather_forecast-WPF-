@@ -25,10 +25,12 @@ namespace Weather_forecast
     /// </summary>
     public partial class MainWindow : Window
     {
+
         public MainWindow()
         {
             InitializeComponent();
         }
+
 
         private void showWeatherNow_Click(object sender, RoutedEventArgs e)
         {
@@ -40,15 +42,14 @@ namespace Weather_forecast
 
             XDocument doc = XDocument.Load(uri);
 
-            string iconUri = (string)doc.Descendants("imageOne").FirstOrDefault();
+            string iconUri = (string)doc.Descendants("icon").FirstOrDefault();
 
-            /*WebClient client = new WebClient();
-
+            /*
+            WebClient client = new WebClient();
             byte[] image = client.DownloadData("http:" + iconUri);
-
             MemoryStream stream = new MemoryStream(image);
+            BitmapImage bitmap = new BitmapImage(stream);
             */
-
 
             string xCTemp = (string)doc.Descendants("temp_c").FirstOrDefault();
             string xFTemp = (string)doc.Descendants("temp_f").FirstOrDefault();
@@ -83,7 +84,7 @@ namespace Weather_forecast
             lastUpdate.Text = xLastUpdate;
         }
 
-        private void showWeatherBrodcast_Click(object sender, RoutedEventArgs e)
+        private void uploadFile_Click(object sender, RoutedEventArgs e)
         {
             /*ForecastForMOreDays objFFMD = new ForecastForMOreDays();
             objFFMD.Show();

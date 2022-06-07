@@ -183,13 +183,13 @@
                 Height="25"
                 Width="120"
                 HorizontalAlignment="Right" Click="showWeatherNow_Click"/>
-        <Button x:Name="showWeatherBrodcast" Content="Pokaż pogodę na najbliższe dni"
+        <Button x:Name="uploadFile" Content="Wgraj pilk"
                 Grid.Column="1"
                 Grid.Row="3"
                 Height="25"
                 HorizontalAlignment="Center" 
                 VerticalAlignment="Top"
-                Margin="0,73,0,0" Click="showWeatherBrodcast_Click"/>
+                Margin="0,73,0,0" Click="uploadFile_Click"/>
         <Label Content="Temperatura (C)"
                Grid.Row="1"
                VerticalAlignment="Top" Margin="0,0,134,0"/>
